@@ -2,13 +2,13 @@
 # DIRECTORIES #
 ###############
 BASEDIR           = $(shell pwd)
-JFlex_DIR         = ${BASEDIR}/FOLDER_0_JFlex
-SRC_DIR           = ${BASEDIR}/FOLDER_2_SRC
-BIN_DIR           = ${BASEDIR}/FOLDER_3_BIN
-INPUT_DIR         = ${BASEDIR}/FOLDER_4_INPUT
-OUTPUT_DIR        = ${BASEDIR}/FOLDER_5_OUTPUT
-EXTERNAL_JARS_DIR = ${BASEDIR}/FOLDER_7_EXTERNAL_JARS
-MANIFEST_DIR      = ${BASEDIR}/FOLDER_8_MANIFEST
+JFlex_DIR         = ${BASEDIR}/jflex
+SRC_DIR           = ${BASEDIR}/src
+BIN_DIR           = ${BASEDIR}/bin
+INPUT_DIR         = ${BASEDIR}/input
+OUTPUT_DIR        = ${BASEDIR}/output
+EXTERNAL_JARS_DIR = ${BASEDIR}/external_jars
+MANIFEST_DIR      = ${BASEDIR}/manifest
 
 #########
 # FILES #
