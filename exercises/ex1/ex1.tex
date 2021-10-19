@@ -21,24 +21,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AUTHOR = COURSE NAME HERE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\author{Compilation 0368:3133}
+%\author{Compilation 0368:3133}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DATE = SUBMISSION DATE HERE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\date{Due 20/11/2019, 07:00 am}
+\date{Due 3/11/2021, 23:59}
 
 %%%%%%%%%
 % TITLE %
 %%%%%%%%%
 \maketitle
 
+\newcommand{\plname}{TBD\ }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Introduction %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 During the semester we will implement a compiler to an invented
-object oriented language called Picasso.
+object oriented language called \plname.
 In order to make this document self contained,
 all the information needed to complete the first exercise is brought here.
 
@@ -48,7 +50,7 @@ all the information needed to complete the first exercise is brought here.
 \section{Programming Assignment}
 The first exercise implements a lexical scanner based on the
 open source tool \href{http://jflex.de/}{JFlex}.
-The input for the scanner is a single text file containing a Picasso program,
+The input for the scanner is a single text file containing a \plname program,
 and the output is a (single) text file containing a tokenized representation of the input.
 The course repository contains a simple skeleton program,
 and you are encouraged to work your way up from there.
@@ -58,7 +60,7 @@ and you are encouraged to work your way up from there.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lexical Considerations}
 \paragraph{Identifiers} may contain letters and digits, and must start with a letter.
-\paragraph{Keywords} in Table \ref{Table_Reserved_Keywords_of_Picasso} can \textit{not}
+\paragraph{Keywords} in Table \ref{Table_Reserved_Keywords} can \textit{not}
 be used as identifiers.
 \begin{table}[h]
 \centering
@@ -69,14 +71,14 @@ extends & return & new    & if    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tabular}
 \caption{
-Reserved keywords of Picasso.
-\label{Table_Reserved_Keywords_of_Picasso}}
+Reserved keywords of \plname.
+\label{Table_Reserved_Keywords}}
 \end{table}
 \paragraph{White spaces} consist of spaces, tabs and newlines characters.
 They may appear between any tokens.
 Keywords and identifiers must be separated by a white space,
 or a token that is neither a keyword nor an identifier.
-\paragraph{Comments} in Picasso are similar to those used in the C programming language,
+\paragraph{Comments} in \plname are similar to those used in the C programming language,
 but may only contain characters from Table \ref{Table_Characters_That _May_Appear_inside_Comments}.
 \begin{table}[h]
 \centering
@@ -96,7 +98,7 @@ letters & digits & white spaces & line terminators \\
 \hline
 \end{tabular}
 \caption{
-Characters that may appear inside comments in Picasso.
+Characters that may appear inside comments in \plname.
 \label{Table_Characters_That _May_Appear_inside_Comments}}
 \end{table}
 A comment beginning with the characters // indicates that the remainder of the line is a comment.
@@ -112,14 +114,14 @@ Integers should \textit{not} have leading zeroes,
 and when they do, it is a lexical error.
 In addition, $-0$ is a lexical error.
 Though integers are stored as 32 bits in memory,
-they are artificially limited in Picasso to have
+they are artificially limited in \plname to have
 16-bits signed values between $-2^{15}$ and $2^{15}-1$.
 Integers out of this range are lexical errors.
 \paragraph{Strings} are sequences of (zero or more) letters between double quotes.
 Strings that contain non letter characters are lexical errors.
 Unclosed strings are lexical errors too.
 \section{Input}
-The input for this exercise is a single text file, the input Picasso program.
+The input for this exercise is a single text file, the input \plname program.
 %%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Output %
 %%%%%%%%%%%%%%%%%%%%%
