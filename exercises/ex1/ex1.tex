@@ -108,14 +108,14 @@ up to the first occurrence of the end sequence */.
 Comments that contain characters that do not appear in Table
 \ref{Table_Characters_That _May_Appear_inside_Comments} are lexical errors.
 Unclosed comments are lexical errors too.
-\paragraph{Integer} literals may start with an optional negation sign $-$,
-followed by a sequence of digits.
+\paragraph{Integers} in \plname are sequences of digits.
+%literals may start with an optional negation sign $-$, followed by a sequence of digits.
 Integers should \textit{not} have leading zeroes,
 and when they do, it is a lexical error.
-In addition, $-0$ is a lexical error.
+%In addition, $-0$ is a lexical error.
 Though integers are stored as 32 bits in memory,
 they are artificially limited in \plname to have
-16-bits signed values between $-2^{15}$ and $2^{15}-1$.
+16-bits signed values between $0$ and $2^{15}-1$.
 Integers out of this range are lexical errors.
 \paragraph{Strings} are sequences of (zero or more) letters between double quotes.
 Strings that contain non letter characters are lexical errors.
@@ -154,7 +154,6 @@ DIVIDE    & $/$  & & NEW              &                          \\
 COMMA     & $,$  & & INT$(value)$     & $value$ is an integer    \\
 DOT       & $.$  & & STRING$(value)$  & $value$ is a string      \\
 SEMICOLON & $;$  & & ID$(value)$      & $value$ is an identifier \\
-ELLIPSIS  & $...$ & & & \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 \end{tabular}
@@ -231,10 +230,8 @@ You are encouraged to use the makefile provided by the exercise skeleton,
 which can be found (along with the other files...) in the course repository using the following link: \\
 \url{https://github.com/davidtr1037/compilation-tau/tree/master/src/ex1}
 
-\newpage
-
 \paragraph{Execution parameters}
-LEXER receives $2$ file names:
+LEXER receives $2$ parameters (file names):
 \begin{itemize}
 \item Input.txt
 \item OutputTokenizedProgram.txt
