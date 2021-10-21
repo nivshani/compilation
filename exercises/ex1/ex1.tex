@@ -7,6 +7,7 @@
 % PACKAGES %
 %%%%%%%%%%%%
 \usepackage{hyperref}
+\usepackage{listings}
 
 %%%%%%%%%%%%%%%%%%
 % BEGIN DOCUMENT %
@@ -205,42 +206,63 @@ should contain a \textit{single} word only: ERROR.
 % SECTION :: Submission Guidelines %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Submission Guidelines}
-Open an account on \href{https://github.com/}{GitHub}.
-Then, visit the
-\href{https://education.github.com/discount_requests/new}{academic discount page}
-to enable the free creation of private repositories.
+\subsection{Project Repository}
+Create an account on \href{https://github.com/}{GitHub}. \\
+Then, visit \href{https://education.github.com/pack}{this} to enable free creation of private repositories. \\
 One team member should create a new \textit{private} repository called \textit{compilation},
-and then invite other team members, the course grader (omarmahamid) and myself (davidtr1037)
-as collaborators.
+and then invite other team members, the course grader (omarmahamid) and myself (davidtr1037) as collaborators. \\
 Please put inside the uppermost folder (\textit{compilation}) the following text files:
 \begin{itemize}
     \item \textit{ids.txt:} the ID's of all team members (one ID per line).
     \item \textit{users.txt:} the GitHub user names of all team members (one user name per line).
     \item \textit{names.txt:} the \textit{hebrew} names of all team members (one name per line).
 \end{itemize}
+
 In addition, \textit{compilation} should contain a sub folder called \textit{ex1} where your code will reside.
 \textit{compilation/ex1} should contain a makefile building your source files to a
-runnable jar file called LEXER (note the lack of the .jar suffix).
+runnable jar file called \textit{LEXER} (note the lack of the .jar suffix).
 Feel free to use the makefile supplied in the course repository,
 or write a new one if you want to. 
 Before you submit, make sure that your exercise compiles and runs
 on the school server: $nova.cs.tau.ac.il$.
 This is the formal running environment of the course.
-You are encouraged to use the makefile provided by the exercise skeleton,
-which can be found (along with the other files...) in the course repository using the following link: \\
-\url{https://github.com/davidtr1037/compilation-tau/tree/master/src/ex1}
 
-\subsection*{Command-line usage}
-LEXER receives $2$ parameters (file names):
+\subsection{Command-line usage}
+\textit{LEXER} receives $2$ parameters (file names):
 \begin{itemize}
 \item Input.txt
 \item OutputTokenizedProgram.txt
 \end{itemize}
 
-\subsection*{Environment requirements}
+\subsection{Skeleton}
+You are encouraged to use the makefile provided by the exercise skeleton,
+which can be found in the course repository using the following link: \\
+\url{https://github.com/davidtr1037/compilation-tau/tree/master/src/ex1}
+Other files of intereset in the provided skeleton:
+\begin{itemize}
+    \item \textit{jflex/LEX\_FILE.lex} (LEX configuration file)
+    \item \textit{src/TokenNames.java} (enum with token types)
+    \item \textit{src/Main.java}
+\end{itemize}
+To use the skeleton, run the following command (in the \textit{src/ex1} directory): \\
+\texttt{\$ make} \\
+This performs the following steps:
+\begin{itemize}
+    \item Generates \textit{src/Lexer.java}
+    \item Compiles the modules into \textit{LEXER}
+    \item Runs \textit{LEXER} on \textit{input/Input.txt}
+\end{itemize}
+
+\subsection{Environment requirements}
 \begin{itemize}
 \item Ubuntu 14.04 / 16.04
 \item Java 8
+\end{itemize}
+
+\subsection{GitHub related material}
+\begin{itemize}
+    \item \url{https://guides.github.com/activities/hello-world/}
+    \item \url{https://docs.github.com/en/get-started}
 \end{itemize}
 
 \end{document}
