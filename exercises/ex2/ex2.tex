@@ -196,14 +196,6 @@ The output is a \textit{single} text file that contains a \textit{single} word.
 Either OK when the input program has correct syntax,
 or otherwise ERROR(\textit{location}), where \textit{location}
 is the line number of the \textit{first} error that was encountered.
-\section{Running the skeleton}
-You can run the skeleton by running the following command (from the directory of the execrcise):
-\begin{itemize}
-\item make
-\end{itemize}
-The makefile generates the relevant files using jflex/cup, compiles everything, runs,
-and generates an image of the resulting syntax tree.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Submission Guidelines %
@@ -211,11 +203,11 @@ and generates an image of the resulting syntax tree.
 \section{Submission Guidelines}
 The skeleton for this exercise can be found \href{https://github.com/davidtr1037/compilation-tau/tree/master/src/ex2}{here}.
 In your project, you need to add the relevant derivation rules and AST constructors.
-Your project must contain the building makefile in the following path:
+Your project must contain the makefile in the following path:
 \begin{itemize}
     \item ex2/Makefile
 \end{itemize}
-This makefile will build the parser (a runnable jar file) in the following path:
+This makefile should build the parser (a runnable jar file) in the following path:
 \begin{itemize}
     \item ex2/PARSER
 \end{itemize}
@@ -229,14 +221,14 @@ Feel free to reuse the makefile supplied in the skeleton, or write a new one if 
 \end{itemize}
 
 \subsection{Skeleton}
-You are encouraged to use the makefile provided by the exercise skeleton.
+You are encouraged to use the makefile provided by the skeleton.
 Some files of intereset in the provided skeleton:
 \begin{itemize}
     \item \textit{jflex/LEX\_FILE.lex} (LEX configuration file)
     \item \textit{src/TokenNames.java} (enum with token types)
     \item \textit{src/Main.java}
 \end{itemize}
-To use the skeleton, run the following command (in the \textit{src/ex1} directory): \\
+To use the skeleton, run the following command (in the \textit{src/ex2} directory): \\
 \texttt{\$ make} \\
 This performs the following steps:
 The makefile generates the relevant files using jflex/cup, compiles everything, runs,
