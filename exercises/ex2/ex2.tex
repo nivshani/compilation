@@ -83,7 +83,7 @@ dec      & $::=$ & varDec $|$ funcDec $|$ classDec $|$ arrayTypedef \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-type      & $::=$ & TYPE\_INT $|$ TYPE\_STRING $|$ ID \\
+type      & $::=$ & TYPE\_INT $|$ TYPE\_STRING $|$ TYPE\_VOID $|$ ID \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -184,7 +184,7 @@ Precedence & Operator & Description & Associativity \\
 \end{tabular}
 \caption{
 Binary operators of \plname along with their associativity and precedence.
-$1$ stands for the lowest precedence, and $9$ for the highest.
+$1$ stands for the lowest precedence, and $8$ for the highest.
 \label{Table_Binary_Operators}}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%
