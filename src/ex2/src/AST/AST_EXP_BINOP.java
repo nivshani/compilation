@@ -43,7 +43,7 @@ public class AST_EXP_BINOP extends AST_EXP
 		if (OP == 1) {sOP = "-";}
 		
 		/*************************************/
-		/* AST NODE TYPE = AST SUBSCRIPT VAR */
+		/* AST NODE TYPE = AST BINOP EXP */
 		/*************************************/
 		System.out.print("AST NODE BINOP EXP\n");
 
