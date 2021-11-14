@@ -196,10 +196,20 @@ The input for this exercise is a single text file, the input \plname program.
 % SECTION :: Output %
 %%%%%%%%%%%%%%%%%%%%%
 \section{Output}
-The output is a \textit{single} text file that contains a \textit{single} word.
-Either OK when the input program has correct syntax,
-or otherwise ERROR(\textit{location}), where \textit{location}
-is the line number of the \textit{first} error that was encountered.
+The output is a \textit{single} text file that contains a \textit{single} word: \\
+When the input program has correct syntax: \\
+\textbf{OK} \\ \\
+When there is a syntax error: \\
+\textbf{ERROR(\textit{location})} \\
+(where \textit{location} is the line number of the \textit{first} error that was encountered.) \\ \\
+When there is a lexical error: \\
+\textbf{ERROR} \\ \\
+
+%Either OK when the input program has correct syntax,
+%or otherwise ERROR(\textit{location}), where \textit{location}
+%is the line number of the \textit{first} error that was encountered.
+%If there is a lexical error,
+%the output file should contain: ERROR.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Submission Guidelines %
