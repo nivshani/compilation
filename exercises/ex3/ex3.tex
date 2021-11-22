@@ -21,24 +21,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AUTHOR = COURSE NAME HERE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\author{Compilation 0368:3133}
+%\author{Compilation 0368:3133}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DATE = SUBMISSION DATE HERE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\date{Due 1/1/2020, before 23:55}
+\date{Due 15/12/2021, before 23:59}
 
 %%%%%%%%%
 % TITLE %
 %%%%%%%%%
 \maketitle
 
+\newcommand{\plname}{\textbf{L}\ }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Introduction %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 We continue our journey of building a compiler
-for the invented object oriented language Picasso.
+for the invented object oriented language \plname.
 In order to make this document self contained,
 all the information needed to complete the third exercise is brought here.
 
@@ -50,7 +52,7 @@ The third exercise implements a semantic analyzer that
 recursively scans the AST produced by
 \href{http://www2.cs.tum.edu/projects/cup/}{CUP},
 and checks if it contains any semantic errors.
-The input for the semantic analyzer is a (single) text file containing a Picasso program,
+The input for the semantic analyzer is a (single) text file containing a \plname program,
 and the output is a (single) text file indicating whether the input program
 is semantically valid or not.
 In addition to that, whenever the input program is valid semantically,
@@ -61,16 +63,16 @@ but the best time to design and implement this addition is
 exercise $3$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SECTION :: Picasso Semantics %
+% SECTION :: Semantics %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Picasso Semantics}
-This section describes the semantics of Picasso,
+\section{The \plname Semantics}
+This section describes the semantics of \plname,
 and provides a multitude of legal and illegal example programs.
 %%%%%%%%%%%%%%%%%%%%%%%%
 % SUB-SECTION :: Types %
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Types}
-The Picasso programming language defines two native types: \textit{integers} and \textit{strings}.
+The \plname programming language defines two native types: \textit{integers} and \textit{strings}.
 In addition, it is possible to define a \textit{class} by specifying its data members and methods.
 Also, given an existing type \verb"T", one can define an \textit{array} of \verb"T"'s.
 Note, that defining classes and arrays is only possible in the uppermost (global) scope.
@@ -145,7 +147,7 @@ Table \ref{Table_Code_Examples_Use_Before_Def} summarizes these facts.
 \label{Table_Code_Examples_Use_Before_Def}}
 \end{table}
 \newpage
-\paragraph{Methods overloading} is \textit{illegal} in Picasso,
+\paragraph{Methods overloading} is \textit{illegal} in \plname,
 with the obvious exception of overriding a method in a derived class.
 Similarly, it is illegal to define a variable with the same name of
 a previously defined variable (shadowing), or a previously defined method.
@@ -196,7 +198,7 @@ Table \ref{Table_Code_Examples_Overload_Override} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 \end{tabular}
-\caption{Method overloading and variable shadowing are both illegal in Picasso.
+\caption{Method overloading and variable shadowing are both illegal in \plname.
 \label{Table_Code_Examples_Overload_Override}}
 \end{table}
 \newpage
@@ -245,11 +247,11 @@ For instance,
 Arrays can only be defined in the uppermost (global) scope.
 They are defined with respect to some previously defined type, as in the following example:
 \[
-\verb"ARRAY IntArray = int[]"
+\verb"array IntArray = int[];"
 \]
 Defining an integer matrix, for example, is possible as follows:
 \[
-\verb"ARRAY IntArray = int[] ARRAY IntMat = IntArray[]"
+\verb"array IntArray = int[]; array IntMat = IntArray[];"
 \]
 In addition, any place in the program that semantically allows an expression of type array,
 should semantically allow \verb"nil" instead. For instance,
@@ -258,7 +260,7 @@ should semantically allow \verb"nil" instead. For instance,
 \begin{tabular}{ | l | l | }
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\verb"ARRAY IntArray = int[]"                &    \\
+\verb"array IntArray = int[];"                &    \\
 \verb"void F(IntArray A){ PrintInt(A[8]); }" & OK \\
 \verb"void main(){ F(nil); }"               &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -278,8 +280,8 @@ they are \textit{not} interchangeable:
 \begin{tabular}{ | l | l | }
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\verb"ARRAY gradesArray = int[]"                 &       \\
-\verb"ARRAY IDsArray    = int[]"                 &       \\
+\verb"array gradesArray = int[];"                 &       \\
+\verb"array IDsArray    = int[];"                 &       \\
 \verb"void F(IDsArray ids){ PrintInt(ids[6]); }" &       \\
 \verb"void main()"                               &       \\
 \verb"{"                                         &       \\
@@ -360,8 +362,8 @@ Table \ref{Table_Code_Examples_Assignments} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $8$ & \verb"ARRAY gradesArray  = int[]"   &       \\
-     & \verb"ARRAY IDsArray     = int[]"   &       \\
+ $8$ & \verb"array gradesArray  = int[];"   &       \\
+     & \verb"array IDsArray     = int[];"   &       \\
      & \verb"IDsArray    i := NEW int[8];" &       \\
      & \verb"gradesArray g := NEW int[8];" &       \\
      & \verb"void foo() { i := g; }"       & ERROR \\
@@ -387,7 +389,7 @@ The type of the condition inside if and while statements is the primitive type i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Return Statements}
 \label{subsection_Return_Statements}
-According to the syntax of Picasso, return statements can only be found inside functions.
+According to the syntax of \plname, return statements can only be found inside functions.
 Since functions can \textit{not} be nested,
 it follows that a return statement belongs to \textit{exactly one} function.
 when a function \verb"foo" is declared to have a \verb"void" return type,
@@ -435,8 +437,8 @@ Table \ref{Table_Code_Examples_Equality_Testing} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $3$ & \verb"ARRAY gradesArray = int[]"        &       \\
-     & \verb"ARRAY IDsArray    = int[]"        &       \\
+ $3$ & \verb"array gradesArray = int[];"        &       \\
+     & \verb"array IDsArray    = int[];"        &       \\
      & \verb"IDsArray   i:= NEW int[8];"       &       \\
      & \verb"gradesArray g:=NEW int[8];"       &       \\
      & \verb"int j := i = g;"                  & ERROR \\
@@ -510,7 +512,7 @@ Table \ref{Table_Code_Examples_Binary_Operations} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scope Rules}
 \label{subsection_Scope_Rules}
-\paragraph{Picasso} defines four kinds of scopes:
+\paragraph{\plname} defines four kinds of scopes:
 block scopes of if and while statements,
 function scopes,
 class scopes and
@@ -547,7 +549,7 @@ Table \ref{Table_Code_Examples_Scope_Rules} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Library Functions}
 \label{subsection_Library_Functions}
-Picasso defines three library functions: PrintInt, PrintString and PrintTrace.\\
+\plname defines three library functions: PrintInt, PrintString and PrintTrace.\\
 The signatures of these functions are as follows:\\ \\
 \verb"void PrintInt(int i)      { ... }"\\ 
 \verb"void PrintString(string s){ ... }"\\ 
@@ -614,124 +616,12 @@ The signatures of these functions are as follows:\\ \\
 \label{Table_Code_Examples_Scope_Rules}}
 \end{table}
 \newpage
-\begin{table}[h]
-\centering
-\begin{tabular}{ l c l }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Program  & $::=$ & dec$^{+}$ \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-dec      & $::=$ & varDec $|$ funcDec $|$ classDec $|$ arrayDec \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-varDec   & $::=$ & ID ID $[$ ASSIGN exp $]$ ';' \\
-         & $::=$ & ID ID ASSIGN newExp ';'      \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-funcDec  & $::=$ & ID ID $'('$ $[$ ID ID $[$ ',' ID ID $]^{*}$ $]$ $')'$ %%
-                   $'\{'$ stmt   $[$ stmt $]^{*}$ $'\}'$                 \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-classDec & $::=$ & CLASS ID $[$ EXTENDS ID $]$ $'\{'$ cField $[$ cField $]^{*}$ $'\}'$ \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-arrayDec & $::=$ & ARRAY ID $=$ ID $'['$ $']'$ \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-exp      & $::=$ & var                                                            \\
-         & $::=$ & $'('$ exp $')'$                                                \\
-         & $::=$ & exp BINOP exp                                                  \\
-         & $::=$ & $[$ var '.' $]$ ID $'('$ $[$ exp $[$ ',' exp $]^{*}$ $]$ $')'$ \\
-         & $::=$ & $['-']$ INT $|$ NIL $|$ STRING                                 \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-var      & $::=$ & ID                  \\
-         & $::=$ & var '.' ID          \\
-         & $::=$ & var $'['$ exp $']'$ \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-stmt     & $::=$ & varDec                                                             \\
-         & $::=$ & var ASSIGN exp ';'                                                 \\
-         & $::=$ & var ASSIGN newExp ';'                                              \\
-         & $::=$ & RETURN $[$ exp $]$ ';'                                             \\
-         & $::=$ & IF $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$             \\
-         & $::=$ & WHILE $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$          \\
-         & $::=$ & $[$ var '.' $]$ ID $'('$ $[$ exp $[$ ',' exp $]^{*}$ $]$ $')'$ ';' \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-newExp   & $::=$ & NEW ID $|$ NEW ID $'['$ exp $']'$ \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-cField   & $::=$ & varDec $|$ funcDec \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-BINOP    & $::=$ & $+$ $|$ $-$ $|$ $*$ $|$ $/$ $|$ $<$ $|$ $>$ $|$ $=$ \\
-INT      & $::=$ & $[1-9][0-9]^{*}$ $|$ $0$                            \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\\
-\end{tabular}
-\caption{
-Context free grammar for the Picasso programming language.
-\label{Table_CFG_Of_Picasso}}
-\end{table}
-\begin{table}[h]
-\centering
-\begin{tabular}{ |c|c|l|l| }
-\hline
-Precedence & Operator & Description & Associativity \\
-\hline
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-1          & $:=$            & assign         &       \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-2          & $=$             & equals         & left  \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-3          & $<,>$           &                & left  \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-4          & $+,-$           &                & left  \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-5          & $*,/$           &                & left  \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-6          & $[$             & array indexing &       \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-7          & $($             & function call  &       \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-8          & $.$     & field access   & left          \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-\end{tabular}
-\caption{
-Binary operators of Picasso along with their associativity and precedence.
-$1$ stands for the lowest precedence, and $9$ for the highest.
-\label{Table_Binary_Operators_Of_Picasso}}
-\end{table}
 
 %%%%%%%%%%%%%%%%%%%%
 % SECTION :: Input %
 %%%%%%%%%%%%%%%%%%%%
 \section{Input}
-The input for this exercise is a single text file, the input Picasso program.
+The input for this exercise is a single text file, the input \plname program.
 
 %%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Output %
@@ -765,7 +655,7 @@ This is the formal running environment of the course.
 
 \paragraph{Execution parameters}
 compiler receives $2$ input file names:\\ \\
-InputPicassoProgram.txt\\
+InputProgram.txt\\
 OutputStatus.txt
 
 \end{document}
