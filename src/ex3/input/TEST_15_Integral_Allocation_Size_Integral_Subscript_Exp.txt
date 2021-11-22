@@ -15,7 +15,7 @@ class Son extends Father
 	int iii;
 }
 
-array WisePeople = Grandfather[]
+array WisePeople = Grandfather[];
 
 void main()
 {
