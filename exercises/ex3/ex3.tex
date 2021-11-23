@@ -632,13 +632,6 @@ Either OK when the input program is correct semantically,
 or otherwise ERROR(\textit{location}), where \textit{location}
 is the line number of the \textit{first} error that was encountered.
 
-\section{Skeleton}
-To run the skeleton use the following command:
-\begin{itemize}
-\item make everything
-\end{itemize}
-This will create an image of the AST, and images which describe the changes in the symbol table.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Submission Guidelines %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -692,6 +685,7 @@ This performs the following steps:
     \item Generates the relevant files using jflex/cup
     \item Compiles the modules into \textit{COMPILER}
     \item Generates an image of the resulting syntax tree
+    \item Generates images which describe the changes in the symbol table
 \end{itemize}
 
 
