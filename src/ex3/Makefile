@@ -116,7 +116,7 @@ compile:
 	@echo "***********************************************************"
 	jar cfm COMPILER ${MANIFEST_FILE} -C ${BIN_DIR} .
 	
-everything:
+debug:
 	clear
 	@echo "*****************************"
 	@echo "*                           *"
