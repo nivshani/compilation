@@ -197,6 +197,17 @@ Table \ref{Table_Code_Examples_Overload_Override} summarizes these facts.
      & \verb"}"                        &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ $5$ & \verb"CLASS Father"             &       \\
+     & \verb"{"                        &       \\
+     & ~ ~ ~ ~\verb"int foo;"          &       \\
+     & \verb"}"                        &       \\
+     & \verb"CLASS Son EXTENDS Father" &       \\
+     & \verb"{"                        &       \\
+     & ~ ~ ~ ~\verb"void foo() { }"       & ERROR \\
+     & \verb"}"                        &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
 \end{tabular}
 \caption{Method overloading and variable shadowing are both illegal in \plname.
 \label{Table_Code_Examples_Overload_Override}}
