@@ -281,7 +281,7 @@ should semantically allow \verb"nil" instead. For instance,
 \label{Table_Code_Examples_nil_Instead_Of_Any_Array}}
 \end{table}
 \paragraph{Note} that allocating arrays with the new operator
-must be done with an \textit{integral size}.
+must be done with an \textit{integral size} (if the size expression is \textbf{constant}, it must be greater than zero).
 Similarly, accessing an array entry is semantically valid
 only when the \textit{subscript expression has an integer type}.
 Note further that if two arrays of type \verb"T" are defined,
