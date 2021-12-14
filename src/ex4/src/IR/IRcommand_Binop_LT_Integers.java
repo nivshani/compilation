@@ -42,8 +42,8 @@ public class IRcommand_Binop_LT_Integers extends IRcommand
 		/* [2] if (t1< t2) goto label_AssignOne;  */
 		/*     if (t1>=t2) goto label_AssignZero; */
 		/******************************************/
-		sir_MIPS_a_lot.getInstance().blt(t1,t2,label_AssignOne);
-		sir_MIPS_a_lot.getInstance().bge(t1,t2,label_AssignZero);
+		MIPSGenerator.getInstance().blt(t1,t2,label_AssignOne);
+		MIPSGenerator.getInstance().bge(t1,t2,label_AssignZero);
 
 		/************************/
 		/* [3] label_AssignOne: */
@@ -52,9 +52,9 @@ public class IRcommand_Binop_LT_Integers extends IRcommand
 		/*         goto end;    */
 		/*                      */
 		/************************/
-		sir_MIPS_a_lot.getInstance().label(label_AssignOne);
-		sir_MIPS_a_lot.getInstance().li(dst,1);
-		sir_MIPS_a_lot.getInstance().jump(label_end);
+		MIPSGenerator.getInstance().label(label_AssignOne);
+		MIPSGenerator.getInstance().li(dst,1);
+		MIPSGenerator.getInstance().jump(label_end);
 
 		/*************************/
 		/* [4] label_AssignZero: */
@@ -63,13 +63,13 @@ public class IRcommand_Binop_LT_Integers extends IRcommand
 		/*         goto end;     */
 		/*                       */
 		/*************************/
-		sir_MIPS_a_lot.getInstance().label(label_AssignZero);
-		sir_MIPS_a_lot.getInstance().li(dst,0);
-		sir_MIPS_a_lot.getInstance().jump(label_end);
+		MIPSGenerator.getInstance().label(label_AssignZero);
+		MIPSGenerator.getInstance().li(dst,0);
+		MIPSGenerator.getInstance().jump(label_end);
 
 		/******************/
 		/* [5] label_end: */
 		/******************/
-		sir_MIPS_a_lot.getInstance().label(label_end);
+		MIPSGenerator.getInstance().label(label_end);
 	}
 }

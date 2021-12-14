@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 /*******************/
 import TEMP.*;
 
-public class sir_MIPS_a_lot
+public class MIPSGenerator
 {
 	private int WORD_SIZE=4;
 	/***********************/
@@ -140,24 +140,24 @@ public class sir_MIPS_a_lot
 	/**************************************/
 	/* USUAL SINGLETON IMPLEMENTATION ... */
 	/**************************************/
-	private static sir_MIPS_a_lot instance = null;
+	private static MIPSGenerator instance = null;
 
 	/*****************************/
 	/* PREVENT INSTANTIATION ... */
 	/*****************************/
-	protected sir_MIPS_a_lot() {}
+	protected MIPSGenerator() {}
 
 	/******************************/
 	/* GET SINGLETON INSTANCE ... */
 	/******************************/
-	public static sir_MIPS_a_lot getInstance()
+	public static MIPSGenerator getInstance()
 	{
 		if (instance == null)
 		{
 			/*******************************/
 			/* [0] The instance itself ... */
 			/*******************************/
-			instance = new sir_MIPS_a_lot();
+			instance = new MIPSGenerator();
 
 			try
 			{

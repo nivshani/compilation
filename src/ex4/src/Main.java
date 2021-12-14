@@ -74,7 +74,7 @@ public class Main
 			/***************************/
 			/* [11] Finalize MIPS file */
 			/***************************/
-			sir_MIPS_a_lot.getInstance().finalizeFile();			
+			MIPSGenerator.getInstance().finalizeFile();			
 
 			/**************************/
 			/* [12] Close output file */
