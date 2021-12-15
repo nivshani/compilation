@@ -28,19 +28,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DATE = SUBMISSION DATE HERE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\date{Due 26/1/2020 before 23:55}
+\date{Due 9/1/2022 before 23:55}
 
 %%%%%%%%%
 % TITLE %
 %%%%%%%%%
 \maketitle
 
+\newcommand{\plname}{\textbf{L}\ }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Introduction %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 Congratulations, you have made it to the final step of
-building an entire compiler for Picasso programs.
+building an entire compiler for \plname programs.
 In order to make this document self contained,
 all the information needed to complete the fourth exercise is brought here again.
 
@@ -48,8 +50,8 @@ all the information needed to complete the fourth exercise is brought here again
 % SECTION :: Programming Assignment %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Programming Assignment}
-The fourth (and last) exercise implements the code generation phase for Picasso programs.
-The chosen destination language this year is \href{https://en.wikipedia.org/wiki/MIPS_architecture}{MIPS}
+The fourth (and last) exercise implements the code generation phase for \plname programs.
+The chosen destination language is \href{https://en.wikipedia.org/wiki/MIPS_architecture}{MIPS}
 assembly, favoured for it straightforward syntax,
 \href{https://en.wikipedia.org/wiki/SPIM}{complete toolchain}
 and available tutorials.
@@ -60,33 +62,33 @@ $(2)$ Translate IR to MIPS instructions,
 but use an unbounded number of temporaries instead of registers.
 $(3)$ Perform liveness analysis, build the interference graph,
 and allocate those hundreds (or so) temporaries into $8$ physical registers.
-The input for this last exercise is a (single) text file, containing a Picasso
+The input for this last exercise is a (single) text file, containing a \plname
 program, and the output is a (single) text file that contains the translation
 of the input program into MIPS assembly.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SECTION :: Picasso Semantics %
+% SECTION :: Semantics %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Picasso Semantics}
-This section describes the semantics of Picasso,
+\section{The \plname Semantics}
+This section describes the semantics of \plname,
 and provides a multitude of example programs.
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SUB-SECTION :: Binary Operations %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Binary Operations}
-\paragraph{Integers} in Picasso are artificially bounded between $-2^{15}$ and $2^{15}-1$.
-The semantics of integer binary operations in Picasso is therefore somewhat different
+\paragraph{Integers} in \plname are artificially bounded between $-2^{15}$ and $2^{15}-1$.
+The semantics of integer binary operations in \plname is therefore somewhat different
 than that of standard programming languages.
 It is presented in Table \ref{Table_Semantics_Of_Rio_Mare_Binary_Operations_Between_Integers},
-and to distinguish Picasso operators from the usual arithmetic signs,
-we shall use a Picasso subscript inside brackets:
-($*_{[Picasso]}$, $+_{[Picasso]}$ etc.)
+and to distinguish \plname operators from the usual arithmetic signs,
+we shall use a \plname subscript inside brackets:
+($*_{[\plname]}$, $+_{[\plname]}$ etc.)
 \begin{table}[h]
 \centering
 \begin{tabular}{|p{10cm}|}
 \hline
 \[
-a ~ *_{[Picasso]} ~ b ~ = ~
+a ~ *_{[\plname]} ~ b ~ = ~
 \begin{cases} 
 -2^{15}  ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a*b \in (-\infty, -2^{15}] \\
 a*b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a*b \in (-2^{15},2^{15}-1] \\
@@ -95,7 +97,7 @@ a*b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a*b \in (-2^{15},2^{15}-1] \\
 \]
 \\ \hline
 \[
-a ~ +_{[Picasso]} ~ b ~ = ~
+a ~ +_{[\plname]} ~ b ~ = ~
 \begin{cases} 
 -2^{15}  ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a+b \in (-\infty, -2^{15}] \\
 a+b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a+b \in (-2^{15},2^{15}-1] \\
@@ -104,7 +106,7 @@ a+b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a+b \in (-2^{15},2^{15}-1] \\
 \]
 \\ \hline
 \[
-a ~ -_{[Picasso]} ~ b ~ = ~
+a ~ -_{[\plname]} ~ b ~ = ~
 \begin{cases} 
 -2^{15}  ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a-b \in (-\infty, -2^{15}] \\
 a-b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a-b \in (-2^{15},2^{15}-1] \\
@@ -113,7 +115,7 @@ a-b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a-b \in (-2^{15},2^{15}-1] \\
 \]
 \\ \hline
 \[
-a ~ /_{[Picasso]} ~ b ~ = ~
+a ~ /_{[\plname]} ~ b ~ = ~
 \begin{cases} 
 -2^{15}             ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ \lfloor a/b \rfloor \in (-\infty, -2^{15}] \\
 \lfloor a/b \rfloor ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ \lfloor a/b \rfloor \in (-2^{15},2^{15}-1] \\
@@ -122,7 +124,7 @@ a ~ /_{[Picasso]} ~ b ~ = ~
 \]
 \\ \hline
 \end{tabular}
-\caption{Semantics of Picasso binary operations between integers
+\caption{Semantics of \plname binary operations between integers
 \label{Table_Semantics_Of_Rio_Mare_Binary_Operations_Between_Integers}}
 \end{table}
 \paragraph{Strings} can be concatenated with binary operation $+$,
@@ -196,7 +198,7 @@ The order in which you evaluate the data members initializations is irrelevant.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Runtime Checks}
 \label{subsection_Runtime_Checks}
-Picasso enforces three kinds of runtime checks:
+\plname enforces three kinds of runtime checks:
 division by zero, invalid pointer dereference and out of bound array access.
 \paragraph{Division by zero} should be handled by printing ``Division By Zero",
 and then exit gracefully by using the exit system call.
@@ -279,7 +281,7 @@ system call example & MIPS code & Remarks      \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Program entry point (main)}
 \label{subsection_Program_Entry_Point_Main}
-Every (valid) Picasso program has a main function with signature: \verb"void main()".
+Every (valid) \plname program has a main function with signature: \verb"void main()".
 This function is the entry point of execution (see also \ref{Paragraph_When_Evaluating_Global_Variables}).
 
 \newpage
@@ -347,8 +349,8 @@ INT      & $::=$ & $[1-9][0-9]^{*}$ $|$ $0$                            \\
 \\
 \end{tabular}
 \caption{
-Context free grammar for the Picasso programming language.
-\label{Table_CFG_Of_Picasso}}
+Context free grammar for the \plname programming language.
+\label{Table_CFG}}
 \end{table}
 \begin{table}[h]
 \centering
@@ -391,16 +393,16 @@ Precedence & Operator & Description & Associativity \\
 \hline
 \end{tabular}
 \caption{
-Binary operators of Picasso along with their associativity and precedence.
+Binary operators of \plname along with their associativity and precedence.
 $1$ stands for the lowest precedence, and $9$ for the highest.
-\label{Table_Binary_Operators_Of_Picasso}}
+\label{Table_Binary_Operators}}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%
 % SECTION :: Input %
 %%%%%%%%%%%%%%%%%%%%
 \section{Input}
-The input for this exercise is a single text file, the input Picasso program.
+The input for this exercise is a single text file, the input \plname program.
 
 %%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Output %
@@ -441,7 +443,7 @@ This is the formal running environment of the course.
 
 \paragraph{Execution parameters}
 compiler receives $2$ input file names:\\ \\
-InputPicassoProgram.txt\\
+InputProgram.txt\\
 OutputMIPS.s
 
 \section{Additional Notes}
