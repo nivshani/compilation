@@ -2,7 +2,7 @@ string s1 := "Having";
 string s2 := "said";
 string s3 := "that";
 
-array StringArray = string[]
+array StringArray = string[];
 
 void main()
 {

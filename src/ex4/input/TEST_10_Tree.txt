@@ -20,7 +20,7 @@ int sum(Tree t) {
 	}
 	return res; }
 
-array TreeArray = Tree[]
+array TreeArray = Tree[];
 
 void main()
 {
