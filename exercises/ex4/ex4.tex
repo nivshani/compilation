@@ -311,28 +311,58 @@ Can be installed using:
 \item sudo apt-get install spim xspim
 \end{itemize}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION :: Submission Guidelines %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Submission Guidelines}
-The skeleton code for this exercise resides (as usual)
-in subdirectory EX4 of the course repository
-(\url{https://github.com/davidtr1037/COMPILATION_TAU_FOR_STUDENTS/tree/master/FOLDER_3_SOURCE_CODE/EX4}).
-COMPILATION/EX4 should contain a makefile building your source files to a
-runnable jar file called COMPILER (note the lack of the .jar suffix).
-Feel free to use the makefile supplied in the course repository,
-or write a new one if you want to. 
-Before you submit, make sure that your exercise compiles and runs
-on the school server: $nova.cs.tau.ac.il$.
-This is the formal running environment of the course.
+The skeleton for this exercise can be found \href{https://github.com/davidtr1037/compilation-tau/tree/master/src/ex4}{here}.
+The makefile must be located in the following path:
+\begin{itemize}
+    \item ex4/Makefile
+\end{itemize}
+This makefile will build the compiler (a runnable jar file) in the following path:
+\begin{itemize}
+    \item ex4/COMPILER
+\end{itemize}
+Feel free to reuse the makefile supplied in the skeleton,
+or write a new one if you want to.
 
-\paragraph{Execution parameters}
-compiler receives $2$ input file names:\\ \\
-InputProgram.txt\\
-OutputMIPS.s
+\subsection{Command-line usage}
+\textit{COMPILER} receives 2 parameters (file paths):
+\begin{itemize}
+    \item \textit{input} (input file path)
+    \item \textit{output} (output file path containing the MIPS code)
+\end{itemize}
+
+\subsection{Skeleton}
+You are encouraged to use the makefile provided by the skeleton.
+\subsubsection{Compiling}
+To build the skeleton, run the following command (in the \textit{src/ex4} directory): \\
+\texttt{\$ make compile} \\
+This performs the following steps:
+\begin{itemize}
+    \item Generates the relevant files using jflex/cup
+    \item Compiles the modules into \textit{COMPILER}
+\end{itemize}
+
+%The skeleton code for this exercise resides (as usual)
+%in subdirectory EX4 of the course repository
+%(\url{https://github.com/davidtr1037/COMPILATION_TAU_FOR_STUDENTS/tree/master/FOLDER_3_SOURCE_CODE/EX4}).
+%COMPILATION/EX4 should contain a makefile building your source files to a
+%runnable jar file called COMPILER (note the lack of the .jar suffix).
+%Feel free to use the makefile supplied in the course repository,
+%or write a new one if you want to. 
+%Before you submit, make sure that your exercise compiles and runs
+%on the school server: $nova.cs.tau.ac.il$.
+%This is the formal running environment of the course.
+%
+%\paragraph{Execution parameters}
+%compiler receives $2$ input file names:\\ \\
+%InputProgram.txt\\
+%OutputMIPS.s
 
 \section{Additional Notes}
 \subsection{PrintInt}
 When printing an integer, print an additional space at the end.
+
 \end{document}
