@@ -165,12 +165,13 @@ from left to right, so for example, the following code should print \verb"32766"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                \\
 \verb"class counter { int i := 32767; }"       \\
-\verb"counter c := NEW counter;"               \\
+\verb"counter c := nil;"                       \\
 \verb"int inc(){ c.i := c.i + 1; return 0;}"   \\
 \verb"int dec(){ c.i := c.i - 1; return 9;}"   \\
 \verb"int foo(int m, int n){ return c.i; }"    \\
 \verb"void main()"                             \\
 \verb"{"                                       \\
+\verb"    c := new counter;"                                       \\
 \verb"    PrintInt(foo(inc(),dec()));"         \\
 \verb"}"                                       \\
                                                \\
@@ -222,7 +223,7 @@ When an invalid pointer dereference occurs, the program should print
 and then exit gracefully by using the exit system call.
 The following code demonstrates an illegal array access:
 \[
-\verb"array IntArray = int[]; IntArray A := NEW int[6]; int i := A[18];"
+\verb"array IntArray = int[]; IntArray A := new int[6]; int i := A[18];"
 \]
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
