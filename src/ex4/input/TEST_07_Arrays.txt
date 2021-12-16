@@ -16,7 +16,7 @@ void RUN()  { PrintString("SonRUN" ); }
 void WALK() { PrintString("SonWALK"); }
 }
 
-array ClassArray = Grandfather[]
+array ClassArray = Grandfather[];
 
 void main()
 {
