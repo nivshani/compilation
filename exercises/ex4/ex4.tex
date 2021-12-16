@@ -164,7 +164,7 @@ from left to right, so for example, the following code should print \verb"32766"
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                \\
-\verb"CLASS counter { int i := 32767; }"       \\
+\verb"class counter { int i := 32767; }"       \\
 \verb"counter c := NEW counter;"               \\
 \verb"int inc(){ c.i := c.i + 1; return 0;}"   \\
 \verb"int dec(){ c.i := c.i - 1; return 9;}"   \\
@@ -210,11 +210,11 @@ The following code will result in such behaviour:
 access data members or methods of uninitialized class variable.
 For example, here:
 \[
-\verb"CLASS Father { int i; int j; } Father f; int i := f.i;"
+\verb"class Father { int i; int j; } Father f; int i := f.i;"
 \]
 Similarly, assigning \verb"NIL" to \verb"f" should clearly trigger the same behaviour:
 \[
-\verb"CLASS Father { int i; int j; } Father f := NIL; int i := f.i;"
+\verb"class Father { int i; int j; } Father f := NIL; int i := f.i;"
 \]
 When an invalid pointer dereference occurs, the program should print
 ``Invalid Pointer Dereference" and then then exit gracefully by using the exit system call.
