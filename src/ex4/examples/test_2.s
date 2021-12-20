@@ -1,6 +1,6 @@
 .data
 z_str: .asciiz "1234"
-z: .word 0
+z: .word z_str
 
 .text
 
@@ -57,10 +57,6 @@ addu $sp, $sp, 4
 jr $ra
 
 main:
-# init global strings
-la $s0, z_str
-sw $s0, z
-
 jal user_main
 li $v0, 10
 li $a0, 1
