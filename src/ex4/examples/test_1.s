@@ -122,5 +122,4 @@ jr $ra
 main:
 jal user_main
 li $v0, 10
-li $a0, 1
 syscall
