@@ -30,7 +30,7 @@ subu $sp, $sp, 4
 sw $t8, 0($sp)
 subu $sp, $sp, 4
 sw $t9, 0($sp)
-sub $sp, $sp, 16
+subu $sp, $sp, 16
 
 # inline implementation of PrintString
 lw $t0, z
