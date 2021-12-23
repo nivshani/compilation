@@ -53,7 +53,7 @@ lw $t8, -36($sp)
 lw $t9, -40($sp)
 lw $fp, 0($sp)
 lw $ra, 4($sp)
-addu $sp, $sp, 4
+addu $sp, $sp, 8
 jr $ra
 
 main:
