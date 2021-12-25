@@ -133,6 +133,12 @@ When concatenating two (null terminated) strings $\{s_{i}\}_{i=1}^{2}$,
 the resulting string $s_{1}s_{2}$ is allocated on the heap,
 and should be null terminated. The result of testing contents equality
 is either $0$ when they are equal, or $1$ otherwise.
+\paragraph{Arrays}
+Testing equality of arrays should be done by comparing the address values of the two arrays.
+The result is $0$ if they are equal and otherwise $1$.
+\paragraph{Objects}
+Testing equality of objects should be done by comparing the address values of the two objects.
+The result is $0$ if they are equal and otherwise $1$.
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SUB-SECTION :: If and While Statements %
