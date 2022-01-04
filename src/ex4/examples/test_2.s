@@ -1,5 +1,5 @@
 .data
-z_str: .asciiz "1234"
+z_str: .asciiz "abcd"
 z: .word z_str
 
 .text

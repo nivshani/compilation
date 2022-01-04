@@ -1,4 +1,4 @@
-string z := "1234";
+string z := "abcd";
 
 void main() {
     PrintString(z);
