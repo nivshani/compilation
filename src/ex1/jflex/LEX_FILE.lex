@@ -71,7 +71,7 @@ import java_cup.runtime.*;
 /* MACRO DECALARATIONS */
 /***********************/
 LineTerminator	= \r|\n|\r\n
-WhiteSpace		= {LineTerminator} | [ \t\f]
+WhiteSpace		= {LineTerminator} | [ \t]
 INTEGER			= 0 | [1-9][0-9]*
 ID				= [a-z]+
 
