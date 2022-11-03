@@ -78,14 +78,21 @@ Reserved keywords of \plname.
 \paragraph{White spaces} consist of spaces, tabs and newlines characters.
 They may appear between any tokens.
 \paragraph{Comments} in \plname are similar to those used in the C programming language,
-but may only contain characters from Table \ref{Table_Characters_That _May_Appear_inside_Comments}.
-A comment beginning with the characters // indicates that the remainder of the line is a comment.
-In addition, a comment can be a sequence of characters that begins with /*,
-followed by any characters from Table \ref{Table_Characters_That _May_Appear_inside_Comments},
+but may only contain characters from Table \ref{Table_Characters_That_May_Appear_inside_Comments}.
+\\
+\textit{Type-1 Comment}: \\
+A sequence of characters that begins with // followed by any character from Table \ref{Table_Characters_That_May_Appear_inside_Comments}
+up to the first occurrence of a newline character.
+Note, for example, that //a\$ is not considered as a \textit{Type-1} comment.
+\\
+\textit{Type-2 Comment}: \\
+A sequence of characters that begins with /* followed by any characters from Table \ref{Table_Characters_That_May_Appear_inside_Comments},
 up to the first occurrence of the end sequence */.
-Comments that contain characters that do not appear in Table
-\ref{Table_Characters_That _May_Appear_inside_Comments} are lexical errors.
-Unclosed comments are lexical errors too.
+An unclosed \textit{Type-2} comments (that is, a missing */) is a lexical error.
+For example, the input /*a is a lexical error, but a*/ is valid.
+\\
+\\
+Comments (of both types) that contain characters that do not appear in Table \ref{Table_Characters_That_May_Appear_inside_Comments} are lexical errors.
 
 \begin{table}[h]
 \centering
@@ -106,7 +113,7 @@ letters & digits & white spaces & line terminators \\
 \end{tabular}
 \caption{
 Characters that may appear inside comments in \plname.
-\label{Table_Characters_That _May_Appear_inside_Comments}}
+\label{Table_Characters_That_May_Appear_inside_Comments}}
 \end{table}
 
 \paragraph{Integers} in \plname are sequences of digits.
