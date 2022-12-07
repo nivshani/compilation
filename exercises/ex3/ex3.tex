@@ -95,6 +95,8 @@ if \verb"M2" is defined after \verb"M1" in the class.
 Following the same concept, %In contrast to all that,
 a method \verb"M" \textit{can't} refer to a data member \verb"d",
 if \verb"d" is defined \textit{after} \verb"M" in the class.
+When allocating a class object using the \textit{new} operator,
+the class name can't be a primitive type (int, string, void).
 %In contrast, %Following the same concept,
 %a method \verb"M1" \textit{can} refer to a method \verb"M2",
 %even if %whenever
@@ -108,30 +110,30 @@ Table \ref{Table_Code_Examples_Use_Before_Def} summarizes these facts.
 \begin{tabular}{|l|l|l|}
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $1$ & \verb"CLASS Son EXTENDS Father"           & ERROR \\
+ $1$ & \verb"class Son extends Father"           & ERROR \\
      & \verb"{"                                  &       \\
      & ~ ~ ~ ~\verb"int bar;"                    &       \\
      & \verb"}"                                  &       \\
-     & \verb"CLASS Father"                       &       \\
+     & \verb"class Father"                       &       \\
      & \verb"{"                                  &       \\
      & ~ ~ ~ ~\verb"void foo() { PrintInt(8); }" &       \\
      & \verb"}"                                  &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $2$ & \verb"CLASS Edge"                         &       \\
+ $2$ & \verb"class Edge"                         &       \\
      & \verb"{"                                  &       \\
      & ~ ~ ~ ~\verb"Vertex u;"                   & ERROR \\
      & ~ ~ ~ ~\verb"Vertex v;"                   &       \\
      & \verb"}"                                  &       \\
-     & \verb"CLASS Vertex"                       &       \\
+     & \verb"class Vertex"                       &       \\
      & \verb"{"                                  &       \\
      & ~ ~ ~ ~\verb"int weight;"                 &       \\
      & \verb"}"                                  &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $3$ & \verb"CLASS UseBeforeDef"                      &    \\
+ $3$ & \verb"class UseBeforeDef"                      &    \\
      & \verb"{"                                       &    \\
      & ~ ~ ~ ~\verb"void foo() { bar(8); }"           & ERROR \\
      & ~ ~ ~ ~\verb"void bar(int i) { PrintInt(i); }" &    \\
@@ -139,7 +141,7 @@ Table \ref{Table_Code_Examples_Use_Before_Def} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $4$ & \verb"CLASS UseBeforeDef"                 &    \\
+ $4$ & \verb"class UseBeforeDef"                 &    \\
      & \verb"{"                                  &    \\
      & ~ ~ ~ ~\verb"void foo() { PrintInt(i); }" & ERROR \\
      & ~ ~ ~ ~\verb"int i;"                      &    \\
@@ -161,29 +163,29 @@ Table \ref{Table_Code_Examples_Overload_Override} summarizes these facts.
 \begin{tabular}{|l|l|l|}
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $1$ & \verb"CLASS Father"                       &       \\
+ $1$ & \verb"class Father"                       &       \\
      & \verb"{"                                  &       \\
      & ~ ~ ~ ~\verb"int foo() { return 8; }"     &       \\
      & \verb"}"                                  &       \\
-     & \verb"CLASS Son EXTENDS Father"           &       \\
+     & \verb"class Son extends Father"           &       \\
      & \verb"{"                                  &       \\
      & ~ ~ ~ ~\verb"void foo() { PrintInt(8); }" & ERROR \\
      & \verb"}"                                  &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $2$ & \verb"CLASS Father"                        &    \\
+ $2$ & \verb"class Father"                        &    \\
      & \verb"{"                                   &    \\
      & ~ ~ ~ ~\verb"int foo(int i) { return 8; }" &    \\
      & \verb"}"                                   & OK \\
-     & \verb"CLASS Son EXTENDS Father"            &    \\
+     & \verb"class Son extends Father"            &    \\
      & \verb"{"                                   &    \\
      & ~ ~ ~ ~\verb"int foo(int j) { return j; }" &    \\
      & \verb"}"                                   &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $3$ & \verb"CLASS IllegalSameName"                   &       \\
+ $3$ & \verb"class IllegalSameName"                   &       \\
      & \verb"{"                                       &       \\
      & ~ ~ ~ ~\verb"void foo() { PrintInt(8); }"      &       \\
      & ~ ~ ~ ~\verb"void foo(int i) { PrintInt(i); }" & ERROR \\
@@ -191,22 +193,22 @@ Table \ref{Table_Code_Examples_Overload_Override} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $4$ & \verb"CLASS Father"             &       \\
+ $4$ & \verb"class Father"             &       \\
      & \verb"{"                        &       \\
      & ~ ~ ~ ~\verb"int foo;"          &       \\
      & \verb"}"                        &       \\
-     & \verb"CLASS Son EXTENDS Father" &       \\
+     & \verb"class Son extends Father" &       \\
      & \verb"{"                        &       \\
      & ~ ~ ~ ~\verb"string foo;"       & ERROR \\
      & \verb"}"                        &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $5$ & \verb"CLASS Father"             &       \\
+ $5$ & \verb"class Father"             &       \\
      & \verb"{"                        &       \\
      & ~ ~ ~ ~\verb"int foo;"          &       \\
      & \verb"}"                        &       \\
-     & \verb"CLASS Son EXTENDS Father" &       \\
+     & \verb"class Son extends Father" &       \\
      & \verb"{"                        &       \\
      & ~ ~ ~ ~\verb"void foo() { }"       & ERROR \\
      & \verb"}"                        &       \\
@@ -226,8 +228,8 @@ For example,
 \begin{tabular}{ | l  | l | }
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\verb"CLASS Father { int i; }"               &    \\
-\verb"CLASS Son EXTENDS Father { int j; }"   & OK \\
+\verb"class Father { int i; }"               &    \\
+\verb"class Son extends Father { int j; }"   & OK \\
 \verb"void foo(Father f) { PrintInt(f.i); }" &    \\
 \verb"void main(){ Son s; foo(s); }"         &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -245,7 +247,7 @@ For instance,
 \begin{tabular}{ | l | l | }
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\verb"CLASS Father { int i; }"              &    \\
+\verb"class Father { int i; }"              &    \\
 \verb"void foo(Father f){ PrintInt(f.i); }" & OK \\
 \verb"void main(){ foo(nil); }"            &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,8 +302,8 @@ they are \textit{not} interchangeable:
 \verb"void F(IDsArray ids){ PrintInt(ids[6]); }" &       \\
 \verb"void main()"                               &       \\
 \verb"{"                                         &       \\
-~ ~ ~ ~\verb"IDsArray ids       := NEW int[8];"  &       \\
-~ ~ ~ ~\verb"gradesArray grades := NEW int[8];"  &       \\
+~ ~ ~ ~\verb"IDsArray ids       := new int[8];"  &       \\
+~ ~ ~ ~\verb"gradesArray grades := new int[8];"  &       \\
 ~ ~ ~ ~\verb"F(grades);"                         & ERROR \\
 \verb"}"                                         &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -334,44 +336,44 @@ Table \ref{Table_Code_Examples_Assignments} summarizes these facts.
 \begin{tabular}{|l|l|l|}
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $1$ & \verb"CLASS Father { int i; }"             & OK \\
+ $1$ & \verb"class Father { int i; }"             & OK \\
      & \verb"Father f := nil;"                   &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $2$ & \verb"CLASS Father { int i; }"             &    \\
-     & \verb"CLASS Son EXTENDS Father { int j; }" & OK \\
-     & \verb"Father f := NEW Son;"                &    \\
+ $2$ & \verb"class Father { int i; }"             &    \\
+     & \verb"class Son extends Father { int j; }" & OK \\
+     & \verb"Father f := new Son;"                &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $3$ & \verb"CLASS Father { int i; }"                  & OK \\
-     & \verb"CLASS Son EXTENDS Father { int j := 8; }" &    \\
+ $3$ & \verb"class Father { int i; }"                  & OK \\
+     & \verb"class Son extends Father { int j := 8; }" &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $4$ & \verb"CLASS Father { int i := 9; }"             &       \\
-     & \verb"CLASS Son EXTENDS Father { int j := i; }" & ERROR \\
+ $4$ & \verb"class Father { int i := 9; }"             &       \\
+     & \verb"class Son extends Father { int j := i; }" & ERROR \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $5$ & \verb"CLASS Father { int foo() { return 90; } }"    &       \\
-     & \verb"CLASS Son EXTENDS Father { int j := foo(); }" & ERROR \\
+ $5$ & \verb"class Father { int foo() { return 90; } }"    &       \\
+     & \verb"class Son extends Father { int j := foo(); }" & ERROR \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $6$ & \verb"CLASS IntList"                       &       \\
+ $6$ & \verb"class IntList"                       &       \\
      & \verb"{"                                   &       \\
      & ~ ~ ~ ~\verb"int head := -1;"              &       \\
-     & ~ ~ ~ ~\verb"IntList tail := NEW IntList;" & ERROR \\
+     & ~ ~ ~ ~\verb"IntList tail := new IntList;" & ERROR \\
      & \verb"}"                                   &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $7$ & \verb"CLASS IntList"                               &    \\
+ $7$ & \verb"class IntList"                               &    \\
      & \verb"{"                                           &    \\
      & ~ ~ ~ ~\verb"IntList tail;"                        &    \\
-     & ~ ~ ~ ~\verb"void Init() { tail := NEW IntList; }" & OK \\
+     & ~ ~ ~ ~\verb"void Init() { tail := new IntList; }" & OK \\
      & ~ ~ ~ ~\verb"int head;"                            &    \\
      & \verb"}"                                           &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -379,8 +381,8 @@ Table \ref{Table_Code_Examples_Assignments} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  $8$ & \verb"array gradesArray  = int[];"   &       \\
      & \verb"array IDsArray     = int[];"   &       \\
-     & \verb"IDsArray    i := NEW int[8];" &       \\
-     & \verb"gradesArray g := NEW int[8];" &       \\
+     & \verb"IDsArray    i := new int[8];" &       \\
+     & \verb"gradesArray g := new int[8];" &       \\
      & \verb"void foo() { i := g; }"       & ERROR \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
@@ -433,7 +435,7 @@ Table \ref{Table_Code_Examples_Equality_Testing} summarizes these facts.
 \begin{tabular}{|l|l|l|}
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $1$ & \verb"CLASS Father { int i; int j; }" &    \\
+ $1$ & \verb"class Father { int i; int j; }" &    \\
      & \verb"int Check(Father f)"            &    \\
      & \verb"{"                              &    \\
      & ~ ~ ~ ~\verb"if (f = nil)"           &    \\
@@ -454,8 +456,8 @@ Table \ref{Table_Code_Examples_Equality_Testing} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  $3$ & \verb"array gradesArray = int[];"        &       \\
      & \verb"array IDsArray    = int[];"        &       \\
-     & \verb"IDsArray   i:= NEW int[8];"       &       \\
-     & \verb"gradesArray g:=NEW int[8];"       &       \\
+     & \verb"IDsArray   i:= new int[8];"       &       \\
+     & \verb"gradesArray g:=new int[8];"       &       \\
      & \verb"int j := i = g;"                  & ERROR \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
@@ -486,14 +488,14 @@ Table \ref{Table_Code_Examples_Binary_Operations} summarizes these facts.
 \begin{tabular}{|l|l|l|}
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $1$ & \verb"CLASS Father"                     &    \\
+ $1$ & \verb"class Father"                     &    \\
      & \verb"{"                                &    \\
      & ~ ~ ~ ~\verb"int foo() { return 8/0; }" & ERROR \\
      & \verb"}"                                &    \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $2$ & \verb"CLASS Father { string s1; string s2; }" &    \\
+ $2$ & \verb"class Father { string s1; string s2; }" &    \\
      & \verb"void foo(Father f)"                     &    \\
      & \verb"{"                                      & OK \\
      & ~ ~ ~ ~\verb"f.s1 := f.s1 + f.s2;"            &    \\
@@ -501,7 +503,7 @@ Table \ref{Table_Code_Examples_Binary_Operations} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $3$ & \verb"CLASS Father { string s1; string s2; }" &       \\
+ $3$ & \verb"class Father { string s1; string s2; }" &       \\
      & \verb"void foo(Father f)"                     &       \\
      & \verb"{"                                      &       \\
      & ~ ~ ~ ~\verb"int i := f.s1 < f.s2;"           & ERROR \\
@@ -509,7 +511,7 @@ Table \ref{Table_Code_Examples_Binary_Operations} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $4$ & \verb"CLASS Father { int j; int k; }" &    \\
+ $4$ & \verb"class Father { int j; int k; }" &    \\
      & \verb"int foo(Father f)"              &    \\
      & \verb"{"                              & OK \\
      & ~ ~ ~ ~\verb"int i := 620;"           &    \\
@@ -601,7 +603,7 @@ The signatures of these functions are as follows:\\ \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  $4$ & \verb"string myvar := "``\verb"ab""\verb";" &    \\
-     & \verb"CLASS Father"                         &    \\
+     & \verb"class Father"                         &    \\
      & \verb"{"                                    &    \\
      & ~ ~ ~ ~\verb"Father myvar := nil;"          &    \\
      & ~ ~ ~ ~\verb"void foo()"                    & OK \\
@@ -614,7 +616,7 @@ The signatures of these functions are as follows:\\ \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  $5$ & \verb"int foo(string s) { return 800;}"    &    \\
-     & \verb"CLASS Father"                        &    \\
+     & \verb"class Father"                        &    \\
      & \verb"{"                                   &    \\
      & ~ ~ ~ ~\verb"string foo(string s)"         &    \\
      & ~ ~ ~ ~\verb"{"                            &    \\
