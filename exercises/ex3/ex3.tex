@@ -191,8 +191,16 @@ Table \ref{Table_Code_Examples_Overload_Override} summarizes these facts.
      & \verb"}"                                       &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ $4$ & \verb"class IllegalSameName"                   &       \\
+     & \verb"{"                                       &       \\
+     & ~ ~ ~ ~\verb"int foo;"      &       \\
+     & ~ ~ ~ ~\verb"void foo(int i) { PrintInt(i); }" & ERROR \\
+     & \verb"}"                                       &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $4$ & \verb"class Father"             &       \\
+ $5$ & \verb"class Father"             &       \\
      & \verb"{"                        &       \\
      & ~ ~ ~ ~\verb"int foo;"          &       \\
      & \verb"}"                        &       \\
@@ -203,7 +211,7 @@ Table \ref{Table_Code_Examples_Overload_Override} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- $5$ & \verb"class Father"             &       \\
+ $6$ & \verb"class Father"             &       \\
      & \verb"{"                        &       \\
      & ~ ~ ~ ~\verb"int foo;"          &       \\
      & \verb"}"                        &       \\
@@ -574,11 +582,12 @@ The signatures of these functions are as follows:\\ \\
 \verb"void PrintInt(int i)      { ... }"\\ 
 \verb"void PrintString(string s){ ... }"\\ 
 \verb"void PrintTrace()         { ... }"\\ 
+\\
+Library functions are treated as if they are defined in the global (main) scope.
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
-Library functions are treated as if they are defined in the global (main) scope.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  $1$ & \verb"int salary := 7800;"                            &    \\
      & \verb"void foo()"                                     &    \\
