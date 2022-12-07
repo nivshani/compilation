@@ -406,11 +406,19 @@ The type of the condition inside if and while statements is the primitive type i
 According to the syntax of \plname, return statements can only be found inside functions.
 Since functions can \textit{not} be nested,
 it follows that a return statement belongs to \textit{exactly one} function.
-when a function \verb"foo" is declared to have a \verb"void" return type,
+When a function \verb"foo" is declared to have a \verb"void" return type,
 then all of its return statements must be \textit{empty} (\verb"return;").
 In contrast, when a function \verb"bar" has a non void return type \verb"T",
 then a return statement inside \verb"bar" must be \textit{non empty},
 and the type of the returned expression must match \verb"T".
+A function/method is allows to have a control flow path without a return statement,
+even if the return type of the function is not \verb"void".
+For example, the following function is semantically valid:\\ \\
+\verb"int f(int x) {" \\
+\verb"  if (x = 7) {" \\
+\verb"    return 1;" \\
+\verb"  }"\\
+\verb"}"\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SUB-SECTION :: Equality Testing %
