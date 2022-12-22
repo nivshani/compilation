@@ -559,7 +559,7 @@ array type names, primitive type names (int, string, void) and library function 
 When a function is defined in the global scope, its name must be different than
 any class type name, array type name, previously defined (global) functions,
 previously defined (global) variables,
-primitive type names (int and string) and library function names (PrintInt, PrintString and PrintTrace).
+primitive type names (int and string) and library function names (PrintInt and PrintString).
 Following the same reason in \ref{Table_Code_Examples_Use_Before_Def},
 functions may only refer to previously defined types, variables and functions.
 \paragraph{(Class) Methods} can only be defined in the class scope.
@@ -577,11 +577,10 @@ Table \ref{Table_Code_Examples_Scope_Rules} summarizes these facts.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Library Functions}
 \label{subsection_Library_Functions}
-\plname defines three library functions: PrintInt, PrintString and PrintTrace.\\
+\plname defines the following library functions: PrintInt and PrintString.\\
 The signatures of these functions are as follows:\\ \\
 \verb"void PrintInt(int i)      { ... }"\\ 
 \verb"void PrintString(string s){ ... }"\\ 
-\verb"void PrintTrace()         { ... }"\\ 
 \\
 Library functions are treated as if they are defined in the global (main) scope.
 \begin{table}[h]
