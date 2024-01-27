@@ -30,7 +30,7 @@ JFlex_FILE     = ${JFlex_DIR}/LEX_FILE.lex
 ########################
 # DEFINITIONS :: LEXER #
 ########################
-INPUT    = ${INPUT_DIR}/Input.txt
+INPUT    = ${INPUT_DIR}/TEST_02_Merge_Lists.txt
 OUTPUT   = ${OUTPUT_DIR}/OutputTokens.txt
 
 all:
@@ -69,7 +69,7 @@ all:
 	@echo "*                                                                   *"
 	@echo "*                                                                   *"
 	@echo "*********************************************************************"
-	javac -cp ${EXTERNAL_JAR_FILES} -d ${BIN_DIR} ${SRC_FILES}
+	javac -g -cp ${EXTERNAL_JAR_FILES} -d ${BIN_DIR} ${SRC_FILES}
 	@echo "\n"
 	@echo "************************************************************************"
 	@echo "*                                                                      *"
@@ -88,4 +88,3 @@ all:
 	@echo "*                           *"
 	@echo "*****************************"
 	java -jar LEXER ${INPUT} ${OUTPUT}
-
